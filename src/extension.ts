@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {EOL} from 'os';
 
-const fileName = 'scratchpad.txt';
+const fileName = 'scratchpad.md';
 let fullPath = '';
 
 export function activate(context: vscode.ExtensionContext) {
@@ -37,8 +37,8 @@ export function deactivate() {
 function newLine(firstLine = false) {
     const now = new Date();
     return (firstLine ? '' : EOL)
-        + '----------'
+        + '### '
         + now.toJSON().slice(0, 10) + ' '
         + now.toLocaleTimeString('fullwise', {hour12: false})
-        + '----------' + EOL;
+        + ' ###' + EOL;
 }
