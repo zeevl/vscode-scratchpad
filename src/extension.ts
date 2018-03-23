@@ -4,14 +4,12 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {EOL} from 'os';
 
-const fileName = 'scratchpad.md';
-let fullPath = '';
-
 export function activate(context: vscode.ExtensionContext) {
 
-    let disposable = vscode.commands.registerCommand('extension.openScratchpad', () => {
+    let disposable = vscode.commands.registerCommand('extension.openScratchpadMd', () => {
+        const config = vscode.workspace.getConfiguration('scratchpadmd')
+        const fullPath = config.get('path') as string;
 
-        fullPath = path.join(context.extensionPath, fileName);
         if (!fs.existsSync(fullPath)) {
             fs.writeFileSync(fullPath, '');
         }
